@@ -1,9 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {HeroService} from "./hero.service";
 import {Hero} from "./hero";
-/**
- * Created by Ahmed Jerid on 19/12/2016.
- */
+
 
 @Component({
   moduleId: module.id,
