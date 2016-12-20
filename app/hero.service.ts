@@ -4,6 +4,7 @@ import {Hero} from './hero';
 import {Http, Headers} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
+import {jsonpFactory} from "@angular/http/src/http_module";
 
 @Injectable()
 export class HeroService {
@@ -44,6 +45,24 @@ export class HeroService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+
+  create(name: string): Promise<Hero> {
+    return this.http
+      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res=>res.json().data)
+      .catch(this.handleError);
+  }
+
+  delete(heroId: number): Promise<void> {
+    const url = `${this.heroesUrl}/${heroId}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(()=> null)
+      .catch(this.handleError);
+  }
+
+
 }
 
 
