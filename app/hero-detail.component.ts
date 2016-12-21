@@ -4,10 +4,12 @@ import {Hero} from './hero';
 import {HeroService} from "./hero.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
+import {AppModule} from "./app.module";
 @Component({
   moduleId: module.id,
   selector: 'my-hero-detail',
-  templateUrl: 'hero-detail.component.html'
+  templateUrl: 'hero-detail.component.html',
+
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
